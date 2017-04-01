@@ -172,4 +172,5 @@ int main()
 	Solution("中级\\case0.txt", "result2.txt");
 	Solution("高级\\case0.txt", "result3.txt");
 	system("pause");
+
 }
