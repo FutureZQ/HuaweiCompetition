@@ -1,2 +1,2 @@
 # HuaweiCompetition
- This is code of Huawei2017Competition
+This is a code of Huawei 2017 Competition
