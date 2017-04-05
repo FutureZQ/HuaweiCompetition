@@ -124,8 +124,8 @@ void Solution(char* filename, char* outputfilename)
 
 	global_op_path_info = NULL;//声明最优路径指针
 
-
-	genAlgorithm(pG, 4);
+	double consumer_ratio = 0.2, pm_ratio = 0.0001;
+	genAlgorithm(pG, 4, consumer_ratio, pm_ratio);
 
 
 	char* topo_output_file = ouput_result(pG, global_op_path_info);//将结果转换成可输出的格式

@@ -4,6 +4,6 @@
 #include "Flody.h"
 #include "k_means.h"
 #include "FindServer.h"
-void genAlgorithm(Graph *pG, int individual_number);
+void genAlgorithm(Graph *pG, int individual_number, double consumer_ratio, double pm_ratio);
 
 #endif

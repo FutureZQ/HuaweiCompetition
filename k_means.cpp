@@ -159,7 +159,7 @@ int* obtainInitialCenter(int** dist, int k_kind, int node_number)
 			sum_dist += findMinDis2center(dist, k_center, i, center_decided);
 		}
 		int rand_range = rand() % sum_dist;//随机抽奖值
-		int new_node;//记录新的节点
+		int new_node=0;//记录新的节点
 		for (int i = 0; i < node_number; i++)
 		{
 			rand_range -= D[i];
