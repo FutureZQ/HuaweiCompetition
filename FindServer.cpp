@@ -102,17 +102,13 @@ void updateMatrix(int** band_matrix, int** cost_matrix, int* path_line, int cutb
 	}
 }
 
-void copy_k_center(int* object_list, int* k_center, int length)
+void obtainServerlist(int* object_list,vector<int> server_individual, int length)
 {
 	object_list[0] = 0;
 	for (int i = 0; i < length; i++)
 	{
-		if (k_center[i] != -1)
-		{
-			int object_length = object_list[0];
-			object_list[++object_length] = k_center[i];
-			object_list[0]++;
-		}
+		if (server_individual[i] == 1)
+			object_list[++object_list[0]] = i;
 	}
 }
 
@@ -182,22 +178,23 @@ int caculatePathBand2Consumer(PathInfo *path_info,int consumer_node)
 	return cost;
 }
 
-PathInfo* findServersAndPath(Graph* pG)
+PathInfo* findServersAndPath(Graph* pG,vector<int> server_individual)
 {
 	int consumer_number = pG->mVexNumConsume;//网络节点数目
 	int netnode_number = pG->mVexNumNet;//消费节点数目
 	int** band_matrix = getOneValueAdMatrix(pG->adMatrix, netnode_number,0);//带宽矩阵
 	int** cost_matrix = getOneValueAdMatrix(pG->adMatrix, netnode_number, 1);//花费矩阵
-	MeansStruct *ms = k_means(pG, consumer_number / 4);//聚类结果储存类
+	
 	int* serverlist = new int[netnode_number];//存储服务器列表
-	copy_k_center(serverlist, ms->k_center, ms->type_number);//将聚类中心拷贝到服务器列表中
+	obtainServerlist(serverlist, server_individual, netnode_number);//将聚类中心拷贝到服务器列表中
+
 	int* consumerlist = new int[consumer_number];//消费列表
-
-
 	for (int i = 0; i < consumer_number; i++)
 	{
 		consumerlist[i] = pG->consumerMatrix[i][1];
 	}
+
+
 	PathInfo *path_info = new PathInfo;
 	for (int i = 0; i < consumer_number; i++)
 	{
@@ -267,7 +264,7 @@ PathInfo* findServersAndPath(Graph* pG)
 	caculateTotalPriceAndServerNumber(path_info, pG->serverPrice);//计算总价格
 
 	//清理空间
-	deleteMeanStruct(&ms);
+
 	delete2DArrary<int>(&band_matrix, netnode_number);
 	delete2DArrary<int>(&cost_matrix, netnode_number);
 	delete[] serverlist;

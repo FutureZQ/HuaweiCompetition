@@ -26,6 +26,9 @@
     <ClInclude Include="k_means.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Gen.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FindServer.cpp">
@@ -44,6 +47,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="k_means.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Gen.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

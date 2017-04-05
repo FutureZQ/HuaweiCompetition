@@ -15,7 +15,7 @@ typedef struct PathInfo
 
 }PathInfo;
 void deletePathInfo(PathInfo** path_info_address);
-PathInfo* findServersAndPath(Graph* pG);
+PathInfo* findServersAndPath(Graph* pG, vector<int> server_individual);
 void adjustPathInfo(PathInfo* path_info);//调整路径方向
 
 extern PathInfo* global_op_path_info;

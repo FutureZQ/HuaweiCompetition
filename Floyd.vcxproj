@@ -138,6 +138,7 @@
     <ClInclude Include="djst.h" />
     <ClInclude Include="FindServer.h" />
     <ClInclude Include="Flody.h" />
+    <ClInclude Include="Gen.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="k_means.h" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     <ClCompile Include="Flody.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Gen.cpp" />
     <ClCompile Include="Graph.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>

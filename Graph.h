@@ -33,7 +33,9 @@ void delete2DArrary(T ***adress_2d_array, int dem)//É¾³ı¶şÎ¬¾ØÕó
 
 	T ** array_2d = *adress_2d_array;
 	for (int i = 0; i < dem; i++)
+	{
 		delete[] array_2d[i];
+	}		
 	delete array_2d;
 	return;
 }

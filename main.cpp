@@ -3,6 +3,7 @@
 #include "Graph.h"
 #include "Flody.h"
 #include "findserver.h"
+#include"Gen.h"
 #include<fstream>
 
 #define MAX_LINE_LEN 10000
@@ -123,33 +124,15 @@ void Solution(char* filename, char* outputfilename)
 
 	global_op_path_info = NULL;//声明最优路径指针
 
-	while (looptime-- > 0)
-	{
-		PathInfo* path_info;
-		path_info = findServersAndPath(pG);
-		adjustPathInfo(path_info);
-		if (global_op_path_info == NULL)
-		{
-			global_op_path_info = path_info;
-		}
-		else if (global_op_path_info->total_price > path_info->total_price)
-		{
-			deletePathInfo(&global_op_path_info);
-			global_op_path_info = path_info;
-		}
-		else
-		{
-			deletePathInfo(&path_info);
-		}
-		if (clock() - startime > 90 * CLOCKS_PER_SEC)//超时
-			break;
-	}
+
+	genAlgorithm(pG, 4);
+
 
 	char* topo_output_file = ouput_result(pG, global_op_path_info);//将结果转换成可输出的格式
 	write2file(topo_output_file, outputfilename);//将结果写入目标文件
 
 	//打印结果
-	//printAllPath(pG, global_op_path_info);
+	printAllPath(pG, global_op_path_info);
 	printf("\nTotal Price: %d/%d\n", global_op_path_info->total_price,pG->mVexNumConsume*pG->serverPrice);
 	printf("Node number: %d\n", global_op_path_info->node_number);
 
@@ -172,5 +155,4 @@ int main()
 	Solution("中级\\case0.txt", "result2.txt");
 	Solution("高级\\case0.txt", "result3.txt");
 	system("pause");
-
 }
